@@ -149,7 +149,7 @@ def omikuji(event):
         event.reply_token,
         [
             TextSendMessage(
-                text = "おみくじの結果は？？？？\n" + files
+                text = "おみくじの結果は？？？？\n" + files[0]
             ),
             ImageSendMessage(
                 original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
