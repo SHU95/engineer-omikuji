@@ -83,19 +83,19 @@ def omikuji(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
-            text = event.message.text
+            text = ret_mikuji
         )
+        """
         [
             TextSendMessage(
-                text = "おみくじの結果！\n" + ret_mikuji
-#                    (identifier == "" if "" else "\n" + identifier)
+                text = "おみくじの結果！\n" +
+                    (identifier == "" if "" else "\n" + identifier)
             ),
-            """
             ImageSendMessage(
                 original_content_url = link
             )
-            """
         ]
+        """
     )
 
 if __name__ == "__main__":
