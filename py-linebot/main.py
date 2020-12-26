@@ -149,8 +149,8 @@ def omikuji(event):
                 text = "おみくじの結果は？？？？\n" + comment
             ),
             ImageSendMessage(
-                original_content_url= f"https://e-omikuji.herokuapp.com/static/mikuji/{image_path}",
-                preview_image_url=f"https://e-omikuji.herokuapp.com//static/mikuji/{image_path}",
+                original_content_url= f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
+                preview_image_url=f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
                 #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
                 #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
             )
