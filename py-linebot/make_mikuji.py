@@ -6,7 +6,7 @@ def make_mikuji(text):
     base_text=['エンジニアおみくじ','縁起の良い言語','デバッグ運','開発環境','技術書','行うべき習慣']
     
     #元画像を読み込んでくる場合
-    image = Image.open("static/mikuji/みくじだいし.png")
+    image = Image.open("https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/みくじだいし.png")
 
     #文字を書きこむ為のオブジェクトが用意されているので取得する
     draw = ImageDraw.Draw(image)
@@ -47,7 +47,7 @@ def make_mikuji(text):
     no=random.randint(0,300)
 
     #出来上がった画像を保存する
-    image.save(f"static/mikuji/newおみくじ{no}.png")
+    image.save(f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/newおみくじ{no}.png")
 
     return f"newおみくじ{no}.png",text[0]
 
