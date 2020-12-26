@@ -89,8 +89,6 @@ def omikuji(event):
         ]
     )
 
-@handler.add(MessageEvent, message=ImageMessage)
-def handle_image(event):
 
 if __name__ == "__main__":
 
