@@ -71,7 +71,12 @@ def handle_message(event):
 def omikuji(event):
    
     container_obj=res()
-    line_bot_api.push_message(messages=container_obj)
+    #line_bot_api.push_message(messages=container_obj)
+    line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(messages=container_obj)
+        )
+    
 
     '''
     text=dic()
