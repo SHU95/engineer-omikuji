@@ -74,7 +74,7 @@ def omikuji(event):
     #line_bot_api.push_message(messages=container_obj)
     line_bot_api.reply_message(
             event.reply_token,
-            FlexSendMessage(messages=container_obj)
+            FlexSendMessage(contents=container_obj)
         )
     
 
