@@ -56,7 +56,7 @@ def handle_message(event):
         #画像送信
         main_image_path = f"lena.jpg"
         image_message = ImageSendMessage(
-            original_content_url = f"https://date-the-image.herokuapp.com/{main_image_path}",
+            original_content_url = f"https://hackathon-engineer-omikuji.herokuapp.com/{main_image_path}",
         )
         line_bot_api.reply_message(event.reply_token,image_message)
         
