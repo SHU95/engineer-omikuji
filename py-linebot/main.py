@@ -80,7 +80,7 @@ def omikuji(event):
         event.reply_token,
         [
             TextSendMessage(
-                text = ret_mikuji
+                text = ret_mikuji + "\n" + f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}"
             ),
             ImageSendMessage(
                 original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
@@ -90,7 +90,7 @@ def omikuji(event):
     )
 
 
-if __name__ == "__main__":
+if (__name__ == "__main__"):
 
     port = int(os.getenv("PORT"))
     app.run(host="0.0.0.0", port = port)
