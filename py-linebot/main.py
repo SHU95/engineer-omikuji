@@ -137,7 +137,9 @@ def omikuji(event):
     #image_path,comment=make_mikuji(text,image)
     import os
     path = os.getcwd()
-    print(path)
+    files = os.listdir(path)
+    print(type(files))  # <class 'list'>
+    print(files) 
 
     image_path = "base.jpg"
     comment='test'
@@ -147,7 +149,7 @@ def omikuji(event):
         event.reply_token,
         [
             TextSendMessage(
-                text = "おみくじの結果は？？？？\n" + path
+                text = "おみくじの結果は？？？？\n" + files
             ),
             ImageSendMessage(
                 original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
