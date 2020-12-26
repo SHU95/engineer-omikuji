@@ -3,12 +3,13 @@ from pathlib import Path
 import random
 from dic import dic
 
-def make_mikuji(text):
+def make_mikuji(text,image):
     base_text=['エンジニアおみくじ','縁起の良い言語','デバッグ運','開発環境','技術書','行うべき習慣']
     
     #元画像を読み込んでくる場合
-    path='./static/mikuji/base.jpg'
-    image = Image.open(path)
+    
+    #path='./static/mikuji/base.jpg'
+    #image = Image.open(path)
     # image = Image.open("https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg")
 
     #文字を書きこむ為のオブジェクトが用意されているので取得する
