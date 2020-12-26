@@ -72,7 +72,7 @@ def handle_message(event):
 def omikuji(event):
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
-        loader=FileSystemLoader('templates'),
+        loader=FileSystemLoader('https://hackathon-engineer-omikuji.herokuapp.com/templates'),
         autoescape=select_autoescape(['html', 'xml', 'json'])
     )
     les = "les"
