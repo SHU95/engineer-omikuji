@@ -1,11 +1,7 @@
 from flask import Flask, request, abort
-import os,json,shutil
-from dic import dic
-from make_mikuji import make_mikuji
-import urllib
+import os,json,shutil,urllib,random
 from PIL import Image, ImageDraw, ImageFont
-from PIL import Image
-from massage import res
+from pathlib import Path
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -19,6 +15,11 @@ from linebot.models import (
     TemplateSendMessage,ButtonsTemplate,URIAction
 )
 
+# これから追加する.pyファイルのimportはここにしてほしい（コピペしにくい）
+from omikuji import omikuji
+from yaminabe import yaminabe
+from massage import res
+from help import help
 
 app = Flask(__name__)
 
@@ -49,72 +50,21 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく!"):
+    if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
+        omikuji(event, line_bot_api)
+    elif (event.message.text =='闇鍋ガチャ' or event.message.text == '闇鍋'):
+        yaminabe(event, line_bot_api)
+    elif (event.message.text =='参拝' or event.message.text =='デバック神社'):
+        debugjinja(event, line_bot_api)
+    elif (event.message.text =='ヘルプ' or event.message.text == 'help'):
+        help(event, line_bot_api)
 
-        omikuji(event)
-        
-        """
-        image_link, lucky_text = make_mikuji.get_mikuji()
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=lucky_text)
-        )
-
-        image_message = ImageSendMessage(
-            content_url = image_link,
-        )
-        line_bot_api.reply_message(event.reply_token,image_message)
-        """
     else:
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
         )
 
-def omikuji(event):
-
-    text=dic()
-    #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
-    #image = Image.open('py-linebot/static/mikuji/base.jpg')
-
-    image_path,comment=make_mikuji(text)
-    import os
-    path = os.getcwd()
-    files = os.listdir(path)
-    print(type(files))  # <class 'list'>
-    print(files) 
-
-
-    url = f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}"
-
-    #image_path = "base.jpg"
-    #comment='test'
-    
-    line_bot_api.reply_message(
-        event.reply_token,
-        TemplateSendMessage(
-            alt_text="占い結果",
-            template=ButtonsTemplate(
-                text=comment + "だよ～",
-                title="占い結果",
-                image_size="contain",
-                thumbnail_image_url=url,
-                actions=[
-                    URIAction(
-                        uri="https://twitter.com/intent/tweet?" + 
-                            urllib.parse.urlencode(
-                            {
-                                "url": url,
-                                "hashtags": "えんじにあうらない",
-                                "text": comment + "だよ～"
-                            }
-                        ),
-                        label="Twitterで共有"
-                    )
-                ]
-            )
-        )
-    )
 if (__name__ == "__main__"):
 
     port = int(os.getenv("PORT"))
