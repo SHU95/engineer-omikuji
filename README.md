@@ -1,4 +1,4 @@
 # winter_hackathon
-- Ryunosuke-ikeda!
+- Ryunosuke-ikeda
 - Honda
 - H-J-Ainashi
