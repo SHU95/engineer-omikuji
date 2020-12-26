@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 import os,json,shutil
 from dic import dic
 from make_mikuji import make_mikuji
+import urllib
 from PIL import Image, ImageDraw, ImageFont
 from PIL import Image
 from massage import res
@@ -14,7 +15,8 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
-    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage
+    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage,
+    TemplateSendMessage,ButtonsTemplate,URIAction
 )
 
 
@@ -140,10 +142,32 @@ def omikuji(event):
 
     #image_path = "base.jpg"
     #comment='test'
-
     
     line_bot_api.reply_message(
         event.reply_token,
+        TemplateSendMessage(
+                alt_text="占い結果",
+                template=ButtonsSendMessage(
+                    text=text,
+                    title="占い結果",
+                    thumbnail_image_url=f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
+                    action=[
+                        URIAction(
+                            uri="https://twitter.com/intent/tweet?" + 
+                            urllib.parse.urlencode(
+                            [
+                                "url": f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
+                                "hashtags": "えんじにあうらない",
+                                "text": text
+                            ],
+                            label="Twitterで共有"
+                            )
+                        )
+                    ]
+                )
+            )
+
+            """
         [
             TextSendMessage(
                 text = "おみくじの結果は？？？？\n" + comment
@@ -153,8 +177,9 @@ def omikuji(event):
                 preview_image_url=f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
                 #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
                 #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
-            )
+            ),
         ]
+            """
     )
     
 
