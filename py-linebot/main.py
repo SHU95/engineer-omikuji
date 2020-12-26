@@ -1,10 +1,11 @@
 from flask import Flask, request, abort
-import os,json,shutil
+import os,json,shutil,urllib
 from dic import dic
 from make_mikuji import make_mikuji
 from PIL import Image, ImageDraw, ImageFont
 from PIL import Image
 from massage import res
+import parse
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -14,7 +15,8 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
-    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage
+    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage,
+    TemplateSendMessage,ButtonsTemplate,URIAction
 )
 
 
@@ -89,7 +91,6 @@ def omikuji(event):
         )
     )
     
-    '''
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
         loader=FileSystemLoader('py-linebot/templates'),
@@ -100,25 +101,20 @@ def omikuji(event):
     les = "les"
     template = template_env.get_template('test.json')
     data = template.render(dict(items=les))
-    '''
 
     select__theme_massage = FlexSendMessage(
             alt_text="テーマ選択",
             contents=BubbleContainer.new_from_json_dict(json.loads(data))
             )
-    '''
-
     line_bot_api.reply_message(
         event.reply_token,
         res()
     ) 
     
-    '''
     line_bot_api.reply_message(
             event.reply_token,
             FlexSendMessage(contents=container_obj)
         )
-    '''
     
 
     '''
@@ -141,17 +137,36 @@ def omikuji(event):
         event.reply_token,
         [
             TextSendMessage(
-                text = "おみくじの結果は？？？？\n" + files[0]
+                text = "おみくじの結果は？？？？\n" + comment
             ),
             ImageSendMessage(
                 original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
                 preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com//static/mikuji/{image_path}",
                 #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
                 #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
+            ),
+            TemplateSendMessage(
+                alt_text="占い結果",
+                template=ButtonsTemplate(
+                    text="Twitterで宣伝しよう！",
+                    title="Twitterで共有",
+                    image_size="cover",
+                    thumbnail_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
+                    actions=[
+                        URIAction(
+                            uri="https://twitter.com/intent/tweet/" + 
+                            urllib.parse.urlencode({
+                                "url" : f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
+                                "hashtags":"えんじにあうらない",
+                                "text" : text
+                            })
+                        )
+                    ]
+
+                )
             )
         ]
     )
-    '''
 
     
 
