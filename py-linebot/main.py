@@ -83,8 +83,10 @@ def omikuji(event):
                 text = ret_mikuji + "\n" + f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}"
             ),
             ImageSendMessage(
-                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
-                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
+                #original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
+                #preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
+                original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
+                preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
             )
         ]
     )
