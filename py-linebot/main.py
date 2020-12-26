@@ -60,18 +60,18 @@ def handle_message(event):
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
 
        omikuji(event)
-        """
-        image_link, lucky_text = make_mikuji.get_mikuji()
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=lucky_text)
-        )
+       """
+       image_link, lucky_text = make_mikuji.get_mikuji()
+       line_bot_api.reply_message(
+           event.reply_token,
+           TextSendMessage(text=lucky_text)
+       )
 
-        image_message = ImageSendMessage(
+       image_message = ImageSendMessage(
           content_url = image_link,
-        )
-        line_bot_api.reply_message(event.reply_token,image_message)
-        """
+       )
+       line_bot_api.reply_message(event.reply_token,image_message)
+       """
 
 
 
