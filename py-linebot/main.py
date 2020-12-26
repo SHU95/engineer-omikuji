@@ -107,7 +107,7 @@ def omikuji(event):
     print(type(files))  # <class 'list'>
     print(files) 
 
-    url = f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}"
+    url = f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}"
 
     #image_path = "base.jpg"
     #comment='test'
@@ -138,8 +138,8 @@ def omikuji(event):
         )
     )
 
+
 if (__name__ == "__main__"):
 
     port = int(os.getenv("PORT"))
     app.run(host="0.0.0.0", port = port)
-
