@@ -85,17 +85,6 @@ def omikuji(event):
         TextSendMessage(
             text = ret_mikuji
         )
-        """
-        [
-            TextSendMessage(
-                text = "おみくじの結果！\n" +
-                    (identifier == "" if "" else "\n" + identifier)
-            ),
-            ImageSendMessage(
-                original_content_url = link
-            )
-        ]
-        """
     )
 
 if __name__ == "__main__":
