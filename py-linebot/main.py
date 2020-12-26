@@ -5,7 +5,6 @@ from make_mikuji import make_mikuji
 from PIL import Image, ImageDraw, ImageFont
 from PIL import Image
 from massage import res
-import parse
 
 from linebot import (
     LineBotApi, WebhookHandler
