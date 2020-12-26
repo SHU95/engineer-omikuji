@@ -49,33 +49,12 @@ def handle_message(event):
         )
 
 
-    #if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
-
-        #omikuji(event)
-
-       
-def omikuji(event):
-    identifier = dic()
-    ret_mikuji = "\n".join(identifier)
-
-
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(
-            text = ret_mikuji
-        )
-    )
-
-@handler.add(MessageEvent, message=ImageMessage)
-def handle_image(event):
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
-        print('OK')
-        #画像送信
-        main_image_path = f"lena.jpg"
-        image_message = ImageSendMessage(
-            original_content_url = f"https://hackathon-engineer-omikuji.herokuapp.com/{main_image_path}",
-        )
-        line_bot_api.reply_message(event.reply_token,image_message)
+
+        omikuji(event)
+
+    
+        
         
         """
         image_link, lucky_text = make_mikuji.get_mikuji()
@@ -89,6 +68,29 @@ def handle_image(event):
         )
         line_bot_api.reply_message(event.reply_token,image_message)
         """
+
+
+
+def omikuji(event):
+    identifier = dic()
+    ret_mikuji = "\n".join(identifier)
+    image_path = f"lena.jpg"
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        [
+            TextSendMessage(
+                text = ret_mikuji
+            ),
+            ImageSendMessage(
+                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
+                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
+            )
+        ]
+    )
+
+@handler.add(MessageEvent, message=ImageMessage)
+def handle_image(event):
 
 if __name__ == "__main__":
 
