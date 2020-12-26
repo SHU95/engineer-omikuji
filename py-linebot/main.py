@@ -85,7 +85,7 @@ def omikuji(event):
     situation = ""
 
     les = "les"
-    template = template_env.get_template('theme_select.json')
+    template = template_env.get_template('test.json')
     data = template.render(dict(items=les))
 
     select__theme_massage = FlexSendMessage(
