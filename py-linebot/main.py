@@ -67,13 +67,13 @@ def handle_message(event):
 
 def omikuji(event):
     text=dic()
-    path=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
-    image = Image.open(path)
+    #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
+    #image = Image.open(path)
 
     image_path,comment=make_mikuji(text,image)
 
-    #image_path = "lena.jpg"
-    #comment='test'
+    image_path = "base.jpg"
+    comment='test'
 
     line_bot_api.reply_message(
         event.reply_token,
