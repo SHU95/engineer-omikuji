@@ -72,8 +72,8 @@ def omikuji(event):
 
     image_path,comment=make_mikuji(text,image)
 
-    image_path = "lena.jpg"
-    comment='test'
+    #image_path = "lena.jpg"
+    #comment='test'
 
     line_bot_api.reply_message(
         event.reply_token,
