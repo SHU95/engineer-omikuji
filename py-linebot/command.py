@@ -59,7 +59,8 @@ def command(event, line_bot_api):
         )
     elif event.message.text=='date':
         tdatetime =  datetime.datetime.now()
-        tstr = tdatetime.strftime.today()
+        tstr=str(tdatetime)
+        #tstr = tdatetime.strftime.today()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=tstr)
@@ -67,7 +68,8 @@ def command(event, line_bot_api):
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='command not found')
+            #TextSendMessage(text='command not found')
+            TextSendMessage(text="command '"+event.message.text+"' not found")
         )
 
 
@@ -77,6 +79,12 @@ def command(event, line_bot_api):
 
 
         
+
+
+
+
+
+
 
 
 
