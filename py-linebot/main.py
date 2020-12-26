@@ -76,7 +76,7 @@ def handle_message(event):
 
 
 def omikuji(event):
-    link, identifier = dic()
+    identifier = dic()
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
@@ -87,9 +87,11 @@ def omikuji(event):
                 text = "おみくじの結果！" +
                     (identifier == "" if "" else "\n" + identifier)
             ),
+            """
             ImageSendMessage(
                 original_content_url = link
             )
+            """
         ]
     )
 
