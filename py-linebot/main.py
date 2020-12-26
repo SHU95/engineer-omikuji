@@ -1,5 +1,5 @@
 from flask import Flask, request, abort
-import os
+import os,json,shutil
 from dic import dic
 from make_mikuji import make_mikuji
 from PIL import Image, ImageDraw, ImageFont
@@ -13,7 +13,8 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,FlexSendMessage
+    MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
+    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage
 )
 
 
@@ -69,10 +70,40 @@ def handle_message(event):
         )
 
 def omikuji(event):
+    from jinja2 import Environment, FileSystemLoader, select_autoescape
+    template_env = Environment(
+        loader=FileSystemLoader('templates'),
+        autoescape=select_autoescape(['html', 'xml', 'json'])
+    )
+    #初期化
+    park = "park"
+    genre = "genre"
+    area = "area"
+    info_url = ""
+    target_url = ""
+    counter = 0
+    situation = ""
+
+    les = "les"
+    template = template_env.get_template('theme_select.json')
+    data = template.render(dict(items=les))
+
+    select__theme_massage = FlexSendMessage(
+            alt_text="テーマ選択",
+            contents=BubbleContainer.new_from_json_dict(json.loads(data))
+            )
+
+    line_bot_api.reply_message(
+    event.reply_token,
+    FlexSendMessage(
+        alt_text="結果表示",
+        contents=BubbleContainer.new_from_json_dict(json.loads(data))
+    )
+) 
+
+
    
-    container_obj=res()
     
-    line_bot_api.reply_message(messages=container_obj)
     '''
     line_bot_api.reply_message(
             event.reply_token,

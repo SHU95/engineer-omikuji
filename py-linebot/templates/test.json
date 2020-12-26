@@ -1,0 +1,54 @@
+{
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://secured.disney.co.jp/content/disney/jp/secured/dcc/tokuten/bf-tdr-prk-tckt/_jcr_content/par/dcc_hero_panel_image/image1.img.jpg/1474355301452.jpg",
+      "size": "full",
+      "aspectRatio": "20:13",
+      "aspectMode": "cover"
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "パークを選択してください",
+          "weight": "bold",
+          "size": "lg"
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "postback",
+            "label": "ランド",
+            "data": "land"
+          }
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "postback",
+            "label": "シー",
+            "data": "sea"
+          }
+        },
+        {
+          "type": "spacer",
+          "size": "sm"
+        }
+      ],
+      "flex": 0
+    }
+    }
