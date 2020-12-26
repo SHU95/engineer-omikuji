@@ -58,7 +58,8 @@ def command(event, line_bot_api):
             TextSendMessage(text=str.lstrip(event.message.text[5:]))
         )
     elif event.message.text=='date':
-        tdatetime =  datetime.datetime.now()
+        from pytz import timezone
+        tdatetime =  datetime.datetime.now(timezone('Asia/Tokyo'))
         tstr=str(tdatetime)
         #tstr = tdatetime.strftime.today()
         line_bot_api.reply_message(
