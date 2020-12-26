@@ -2,12 +2,9 @@ from PIL import Image, ImageDraw, ImageFont
 import random
 from dic import dic
 
-def get_mikuji():
-    return make_mikuji(
-    )
-
 def make_mikuji(text):
     base_text=['エンジニアおみくじ','縁起の良い言語','デバッグ運','開発環境','技術書','行うべき習慣']
+    
     #元画像を読み込んでくる場合
     image = Image.open("./mikuji/みくじだいし.png")
 
@@ -50,9 +47,9 @@ def make_mikuji(text):
     no=random.randint(0,300)
 
     #出来上がった画像を保存する
-    image.save(f"./mikuji/newおみくじ{no}.png")
+    image.save(f"./static/mikuji/newおみくじ{no}.png")
 
-    return f"https://winter-hackathon2020.herokuapp.com/mikuji/newおみくじ{no}.png",text[0]
+    return f"newおみくじ{no}.png",text[0]
 
 
 

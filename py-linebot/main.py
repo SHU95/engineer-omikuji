@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 import os
 from dic import dic
-import make_mikuji
+from make_mikuji import make_mikuji
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -42,19 +42,9 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if (event.message.text != "おみくじ"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
-
-
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
 
         omikuji(event)
-
-    
-        
         
         """
         image_link, lucky_text = make_mikuji.get_mikuji()
@@ -68,23 +58,27 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token,image_message)
         """
-
-
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
 
 def omikuji(event):
-    identifier = dic()
-    ret_mikuji = "\n".join(identifier)
-    image_path = "static/mikuji/lena.jpg"
+    text=dic()
+    image_path,comment=make_mikuji(text)
+
+    #image_path = "static/mikuji/lena.jpg"
 
     line_bot_api.reply_message(
         event.reply_token,
         [
             TextSendMessage(
-                text = ret_mikuji + "\n" + f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}"
+                text = "おみくじの結果は？？？？\n" + comment
             ),
             ImageSendMessage(
-                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
-                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/{image_path}",
+                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
+                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
                 #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
                 #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
             )
