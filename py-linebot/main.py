@@ -72,7 +72,7 @@ def omikuji(event):
    
     container_obj=res()
     
-    line_bot_api.reply_message(event.reply_token,messages=container_obj)
+    line_bot_api.reply_message(messages=container_obj)
     '''
     line_bot_api.reply_message(
             event.reply_token,
