@@ -1,6 +1,7 @@
 from flask import Flask, request, abort
 import os
 from dic import dic
+import make_mikuji
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -43,7 +44,8 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=event.message.text)
+    )
 
     """
     # 画像送信
@@ -55,7 +57,19 @@ def handle_message(event):
     """
 
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
-        omikuji(event)
+        #omikuji(event)
+        image_link, lucky_text = make_mikuji.get_mikuji()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=lucky_text)
+        )
+
+        image_message = ImageSendMessage(
+          content_url = image_link,
+        )
+        line_bot_api.reply_message(event.reply_token,image_message)
+
+
 
 def omikuji(event):
     link, identifier = dic()
