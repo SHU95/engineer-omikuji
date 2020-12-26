@@ -5,3 +5,4 @@ flask-migrate
 pymysql
 line-bot-sdk
 gunicorn
+Pillow

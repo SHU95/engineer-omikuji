@@ -1,6 +1,7 @@
 from flask import Flask, request, abort
 import os
 from dic import dic
+import make_mikuji
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -41,12 +42,14 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+    if (event.message.text != "おみくじ"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
 
-    """
     # 画像送信
+    """
     main_image_path = f"lena.jpg"
     image_message = ImageSendMessage(
         original_content_url = f"https://date-the-image.herokuapp.com/{main_image_path}",
@@ -55,24 +58,33 @@ def handle_message(event):
     """
 
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
-        omikuji(event)
+
+       omikuji(event)
+       """
+       image_link, lucky_text = make_mikuji.get_mikuji()
+       line_bot_api.reply_message(
+           event.reply_token,
+           TextSendMessage(text=lucky_text)
+       )
+
+       image_message = ImageSendMessage(
+          content_url = image_link,
+       )
+       line_bot_api.reply_message(event.reply_token,image_message)
+       """
+
+
 
 def omikuji(event):
-    link, identifier = dic()
+    identifier = dic()
+    ret_mikuji = "\n".join(identifier)
+
+
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
-            text = event.message.text
+            text = ret_mikuji
         )
-        [
-            TextSendMessage(
-                text = "おみくじの結果！" +
-                    (identifier == "" if "" else "\n" + identifier)
-            ),
-            ImageSendMessage(
-                original_content_url = link
-            )
-        ]
     )
 
 if __name__ == "__main__":
