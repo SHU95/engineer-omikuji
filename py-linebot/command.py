@@ -18,8 +18,7 @@ from linebot.models import (
     TemplateSendMessage,ButtonsTemplate,URIAction,VideoSendMessage
 )
 
-helpMsg = "" +
-    "ls   \n" + 
+helpMsg ="ls   \n" +
     "sl   蒸気機関車が走ります。\n"
 
 def command(event, line_bot_api):
@@ -85,6 +84,13 @@ def command(event, line_bot_api):
 
 
         
+
+
+
+
+
+
+
 
 
 
