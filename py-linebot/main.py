@@ -140,6 +140,8 @@ def omikuji(event):
     print(type(files))  # <class 'list'>
     print(files) 
 
+    url = f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}"
+
     #image_path = "base.jpg"
     #comment='test'
     
@@ -150,16 +152,16 @@ def omikuji(event):
                 template=ButtonsSendMessage(
                     text=text,
                     title="占い結果",
-                    thumbnail_image_url=f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
+                    thumbnail_image_url=url,
                     action=[
                         URIAction(
                             uri="https://twitter.com/intent/tweet?" + 
                             urllib.parse.urlencode(
-                            [
-                                "url": f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
+                            {
+                                "url": url,
                                 "hashtags": "えんじにあうらない",
                                 "text": text
-                            ],
+                            },
                             label="Twitterで共有"
                             )
                         )
