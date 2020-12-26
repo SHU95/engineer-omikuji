@@ -96,6 +96,14 @@ def omikuji(event):
         autoescape=select_autoescape(['html', 'xml', 'json'])
     )
     
+    #初期化
+    park = "park"
+    genre = "genre"
+    area = "area"
+    info_url = ""
+    target_url = ""
+    counter = 0
+    situation = ""
 
     les = "les"
     template = template_env.get_template('test.json')
@@ -106,9 +114,15 @@ def omikuji(event):
             contents=BubbleContainer.new_from_json_dict(json.loads(data))
             )
     line_bot_api.reply_message(
-        event.reply_token,
-        res()
+    event.reply_token,
+    FlexSendMessage(
+        alt_text="結果表示",
+        contents=BubbleContainer.new_from_json_dict(json.loads(data))
+    )
     ) 
+
+
+    
     
     line_bot_api.reply_message(
             event.reply_token,
