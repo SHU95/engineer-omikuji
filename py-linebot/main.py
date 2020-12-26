@@ -74,7 +74,7 @@ def handle_message(event):
 def omikuji(event):
     identifier = dic()
     ret_mikuji = "\n".join(identifier)
-    image_path = f"mikuji/newおみくじ.jpg"
+    image_path = f"mikuji/newおみくじ.png"
 
     line_bot_api.reply_message(
         event.reply_token,
