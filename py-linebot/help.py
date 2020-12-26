@@ -9,6 +9,7 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
+
 from linebot.models import (
     MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
     FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage,
@@ -17,26 +18,25 @@ from linebot.models import (
 
 #TODO ヘルプコメントとコマンド誰か書いて
 help_comment = ""
-msgActions = [
-    MessageAction(
-        text="おみくじ",
-        label="おみくじ"
-    ),
-    MessageAction(
-        text="闇鍋",
-        label="闇鍋ガチャ"
-    )
-]
 
 def help(event, line_bot_api):
     line_bot_api.reply_message(
         event.reply_token,
         TemplateSendMessage(
             alt_text="ヘルプ",
-            template=TemplateSendMessage(
+            template=ButtonsTemplate(
                 text=help_comment,
                 title="ヘルプ",
-                actions=msgActions
+                actions=[
+                    MessageAction(
+                        text="おみくじ",
+                        label="おみくじ"
+                    ),
+                    MessageAction(
+                        text="闇鍋",
+                        label="闇鍋ガチャ"
+                    )
+                ]
             )
         )
     )

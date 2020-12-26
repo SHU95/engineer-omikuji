@@ -34,6 +34,7 @@ def debugjinja(event, line_bot_api):
   '真のプログラマは、楽をするためにはどんな苦労も厭わない。',
   '次の日ぱっと見ると一瞬で原因がわかる。',
   'プログラムは思った通りに動かない。書いた通りに動く。',
+  '焦らず急いで正確に'
   ]
 
   ans=random.choice(kakugen)
@@ -51,8 +52,9 @@ def debugjinja(event, line_bot_api):
         event.reply_token,
         [
             ImageSendMessage(
-                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
-                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
+                #original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
+                original_content_url= f"py-linebot/static/mikuji/{image_path}",
+                preview_image_url=f"py-linebot/static/mikuji/{image_path}",
             ),
             TextSendMessage(
                 text = ans
