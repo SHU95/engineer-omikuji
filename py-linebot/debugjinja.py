@@ -57,7 +57,7 @@ def debugjinja(event, line_bot_api):
                 preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
             ),
             TextSendMessage(
-                text = ans
+                text = f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}"
             )
 
         ]
