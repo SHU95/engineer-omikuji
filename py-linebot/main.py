@@ -47,7 +47,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
+    if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく!"):
 
         omikuji(event)
         
@@ -89,6 +89,7 @@ def omikuji(event):
         )
     )
     
+
     '''
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
@@ -112,6 +113,7 @@ def omikuji(event):
         event.reply_token,
         res()
     ) 
+
     
     '''
     line_bot_api.reply_message(
@@ -141,7 +143,7 @@ def omikuji(event):
         event.reply_token,
         [
             TextSendMessage(
-                text = "おみくじの結果は？？？？\n" + files[0]
+                text = "おみくじの結果は？？？？\n" + comment
             ),
             ImageSendMessage(
                 original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
@@ -152,10 +154,6 @@ def omikuji(event):
         ]
     )
     '''
-
-    
-
-
 
 if (__name__ == "__main__"):
 
