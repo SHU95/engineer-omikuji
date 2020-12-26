@@ -19,9 +19,14 @@ from linebot.models import (
 )
 
 def command(event, line_bot_api):
-  if event.message.text=='ls':
-    text='docker,static,command.py','debugjinja.py','']
-    line_bot_api.reply_message(
+    if event.message.text=='ls':
+        text='docker, static, command.py, debugjinja.py'
+        line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=text)
+            )
+    else:
+        line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=text)
+            TextSendMessage(text=event.message.text)
         )
