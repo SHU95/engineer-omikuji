@@ -144,29 +144,6 @@ def omikuji(event):
                 #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
                 #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
             )
-            """
-            ,
-            TemplateSendMessage(
-                alt_text="占い結果",
-                template=ButtonsTemplate(
-                    text="Twitterで宣伝しよう！",
-                    title="Twitterで共有",
-                    image_size="cover",
-                    thumbnail_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
-                    actions=[
-                        URIAction(
-                            uri="https://twitter.com/intent/tweet/" + 
-                            urllib.parse.urlencode({
-                                "url" : f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
-                                "hashtags":"えんじにあうらない",
-                                "text" : text
-                            })
-                        )
-                    ]
-
-                )
-            )
-            """
         ]
     )
 
