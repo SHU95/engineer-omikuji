@@ -42,10 +42,11 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)
-    )
+    if (event.message.text != "おみくじ"):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
 
     # 画像送信
     """
@@ -57,12 +58,8 @@ def handle_message(event):
     """
 
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-    )
-        #omikuji(event)
-        """
+
+       #omikuji(event)
         image_link, lucky_text = make_mikuji.get_mikuji()
         line_bot_api.reply_message(
             event.reply_token,
@@ -73,7 +70,6 @@ def handle_message(event):
           content_url = image_link,
         )
         line_bot_api.reply_message(event.reply_token,image_message)
-        """
 
 
 
