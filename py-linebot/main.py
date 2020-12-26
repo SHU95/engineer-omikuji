@@ -99,7 +99,7 @@ def omikuji(event):
         alt_text="結果表示",
         contents=BubbleContainer.new_from_json_dict(json.loads(data))
     )
-) 
+    ) 
 
 
    
