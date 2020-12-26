@@ -19,12 +19,12 @@ from linebot.models import (
 help_comment = ""
 msgActions = [
     MessageAction(
-        label="おみくじ",
-        text="おみくじ"
+        text="おみくじ",
+        label="おみくじ"
     ),
     MessageAction(
-        label="闇鍋ガチャ",
-        text="闇鍋"
+        text="闇鍋",
+        label="闇鍋ガチャ"
     )
 ]
 
@@ -34,8 +34,8 @@ def help(event, line_bot_api):
         TemplateSendMessage(
             alt_text="ヘルプ",
             template=TemplateSendMessage(
-                title="ヘルプ",
                 text=help_comment,
+                title="ヘルプ",
                 actions=msgActions
             )
         )

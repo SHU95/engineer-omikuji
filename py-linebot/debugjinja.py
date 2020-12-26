@@ -41,9 +41,9 @@ def debugjinja(event, line_bot_api):
   h=dt_now.hour
 
   if h<=17 or h>8:
-    image_path='hiru2.jpg'
+    image_path='hiru3.jpg'
   else:
-    image_path='yoru2.jpg'
+    image_path='yoru3.jpg'
 
 
 
