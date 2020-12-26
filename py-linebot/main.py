@@ -3,6 +3,8 @@ import os
 from dic import dic
 from make_mikuji import make_mikuji
 from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
+from massage import res
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -11,8 +13,9 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,FlexSendMessage
 )
+
 
 app = Flask(__name__)
 
@@ -66,6 +69,11 @@ def handle_message(event):
         )
 
 def omikuji(event):
+   
+    container_obj=res()
+    line_bot_api.push_message(messages=container_obj)
+
+    '''
     text=dic()
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
     #image = Image.open(path)
@@ -75,6 +83,7 @@ def omikuji(event):
     image_path = "base.jpg"
     comment='test'
 
+    
     line_bot_api.reply_message(
         event.reply_token,
         [
@@ -89,6 +98,10 @@ def omikuji(event):
             )
         ]
     )
+    '''
+
+    
+
 
 
 if (__name__ == "__main__"):
