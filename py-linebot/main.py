@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 import os,json,shutil
 from dic import dic
 from make_mikuji import make_mikuji
+import urllib
 from PIL import Image, ImageDraw, ImageFont
 from PIL import Image
 from massage import res
@@ -14,7 +15,8 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
-    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage
+    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage,
+    TemplateSendMessage,ButtonsTemplate,URIAction
 )
 
 
@@ -70,28 +72,7 @@ def handle_message(event):
         )
 
 def omikuji(event):
-    '''
-    
-    from jinja2 import Environment, FileSystemLoader, select_autoescape
-    template_env = Environment(
-        loader=FileSystemLoader('py-linebot/templates'),
-        autoescape=select_autoescape(['html', 'xml', 'json'])
-    )
-    les = "les"
-    template = template_env.get_template('test.json')
-    data = template.render(dict(items=les))
 
-    line_bot_api.reply_message(
-        event.reply_token,
-        FlexSendMessage(
-            alt_text="items",
-            contents=CarouselContainer.new_from_json_dict(json.loads(data))
-        )
-    )
-    
-
-    '''
-    
     text=dic()
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
     #image = Image.open('py-linebot/static/mikuji/base.jpg')
@@ -102,6 +83,7 @@ def omikuji(event):
     files = os.listdir(path)
     print(type(files))  # <class 'list'>
     print(files) 
+
 
     url = f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}"
 
@@ -115,14 +97,14 @@ def omikuji(event):
             template=ButtonsTemplate(
                 text=comment + "だよ～",
                 title="占い結果",
-                image_size="cover",
+                image_size="contain",
                 thumbnail_image_url=url,
                 actions=[
                     URIAction(
                         uri="https://twitter.com/intent/tweet?" + 
                             urllib.parse.urlencode(
                             {
-                                "link": url,
+                                "url": url,
                                 "hashtags": "えんじにあうらない",
                                 "text": comment + "だよ～"
                             }
@@ -133,7 +115,6 @@ def omikuji(event):
             )
         )
     )
-
 if (__name__ == "__main__"):
 
     port = int(os.getenv("PORT"))
