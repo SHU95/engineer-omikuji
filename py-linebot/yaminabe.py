@@ -3,6 +3,7 @@ import os,json,shutil
 import urllib
 from PIL import Image, ImageDraw, ImageFont
 from massage import res
+import random
 
 from linebot import (
     LineBotApi, WebhookHandler

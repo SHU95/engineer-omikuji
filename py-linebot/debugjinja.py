@@ -42,9 +42,9 @@ def debugjinja(event, line_bot_api):
   h=dt_now.hour
 
   if h<=17 or h>8:
-    image_path='hiru3.jpg'
+    image_path='hiru.jpg'
   else:
-    image_path='yoru3.jpg'
+    image_path='yoru.jpg'
 
 
 
@@ -52,9 +52,9 @@ def debugjinja(event, line_bot_api):
         event.reply_token,
         [
             ImageSendMessage(
-                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/py-linebot/static/mikuji/{image_path}",
+                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
                 #original_content_url= f"py-linebot/static/mikuji/{image_path}",
-                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/py-linebot/static/mikuji/{image_path}",
+                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
             ),
             TextSendMessage(
                 text = ans

@@ -17,7 +17,7 @@ from linebot.models import (
 )
 
 #TODO ヘルプコメントとコマンド誰か書いて
-help_comment = "「いつになったら完成するのだろう」"
+help_comment = " コロナ禍でもエンジニアが年末年始を楽しむために作ったLINEBotです。"
 
 def help(event, line_bot_api):
     line_bot_api.reply_message(
