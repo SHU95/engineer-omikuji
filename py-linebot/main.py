@@ -70,7 +70,7 @@ def omikuji(event):
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
     #image = Image.open(path)
 
-    image_path,comment=make_mikuji(text,image)
+    #image_path,comment=make_mikuji(text,image)
 
     image_path = "base.jpg"
     comment='test'
