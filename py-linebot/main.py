@@ -14,7 +14,7 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
-    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage
+    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage
 )
 
 
