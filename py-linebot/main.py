@@ -154,7 +154,7 @@ def omikuji(event):
                 title="占い結果",
                 image_size="cover",
                 thumbnail_image_url=url,
-                action=[
+                actions=[
                     URIAction(
                         uri="https://twitter.com/intent/tweet?" + 
                             urllib.parse.urlencode(
