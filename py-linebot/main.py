@@ -72,7 +72,7 @@ def handle_message(event):
         )
 
 def omikuji(event):
-
+    '''
     
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
@@ -91,9 +91,44 @@ def omikuji(event):
         )
     )
     
+    '''
+
+    '''
+    from jinja2 import Environment, FileSystemLoader, select_autoescape
+    template_env = Environment(
+        loader=FileSystemLoader('py-linebot/templates'),
+        autoescape=select_autoescape(['html', 'xml', 'json'])
+    )
+    
+
+    les = "les"
+    template = template_env.get_template('test.json')
+    data = template.render(dict(items=les))
+    '''
+    '''
+
+    select__theme_massage = FlexSendMessage(
+            alt_text="テーマ選択",
+            contents=BubbleContainer.new_from_json_dict(json.loads(data))
+            )
+    '''
+    '''
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        res()
+    ) 
+    '''
 
 
- 
+    
+    '''
+    line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(contents=container_obj)
+        )
+    '''
+    
 
     
     text=dic()
@@ -107,13 +142,14 @@ def omikuji(event):
     print(type(files))  # <class 'list'>
     print(files) 
 
-    url = f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}"
+    url = f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}"
 
     #image_path = "base.jpg"
     #comment='test'
     
     line_bot_api.reply_message(
         event.reply_token,
+
         TemplateSendMessage(
             alt_text="占い結果",
             template=ButtonsTemplate(
@@ -134,6 +170,7 @@ def omikuji(event):
                         label="Twitterで共有"
                     )
                 ]
+
             )
         )
     )
@@ -143,3 +180,4 @@ if (__name__ == "__main__"):
 
     port = int(os.getenv("PORT"))
     app.run(host="0.0.0.0", port = port)
+
