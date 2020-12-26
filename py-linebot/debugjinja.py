@@ -43,9 +43,9 @@ def debugjinja(event, line_bot_api):
   if h<=17 or h>8:
     image_path='hiru2.jpg'
   else:
-    image_path='yoru.jpg'
+    image_path='yoru2.jpg'
 
-  image_path=
+
 
   line_bot_api.reply_message(
         event.reply_token,

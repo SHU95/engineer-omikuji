@@ -17,4 +17,4 @@ from linebot.models import (
 )
 
 def yaminabe(event, line_bot_api):
-  gatixya=[['HTML','CSS','JS'],['python','Go','R','Ruby'],[]]
+  gatixya=[['HTML','CSS','JS'],['python','Go','R','Ruby']]
