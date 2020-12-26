@@ -70,10 +70,10 @@ def handle_message(event):
         )
 
 def omikuji(event):
-    '''
+    
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
-        loader=FileSystemLoader('https://hackathon-engineer-omikuji.herokuapp.com/templates'),
+        loader=FileSystemLoader('py-linebot/templates'),
         autoescape=select_autoescape(['html', 'xml', 'json'])
     )
     les = "les"
@@ -87,7 +87,7 @@ def omikuji(event):
             contents=CarouselContainer.new_from_json_dict(json.loads(data))
         )
     )
-    '''
+    
 
 
 
@@ -129,7 +129,7 @@ def omikuji(event):
     '''
     
 
-    
+    '''
     text=dic()
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
     #image = Image.open('py-linebot/static/mikuji/base.jpg')
@@ -159,7 +159,7 @@ def omikuji(event):
             )
         ]
     )
-    
+    '''
 
     
 
