@@ -17,7 +17,7 @@ from linebot.models import (
 )
 
 
-def omikuji(event):
+def omikuji(event, line_bot_api):
 
     text=dic()
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
