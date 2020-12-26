@@ -161,9 +161,9 @@ def omikuji(event):
                             "url": url,
                             "hashtags": "えんじにあうらない",
                             "text": text
-                        },
+                        }
+                        ),
                         label="Twitterで共有"
-                        )
                     )
                 ]
             )
