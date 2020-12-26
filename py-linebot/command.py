@@ -19,8 +19,12 @@ from linebot.models import (
 )
 
 helpMsg ="""
-ls   \n
-sl   蒸気機関車が走ります。\n
+help コマンドのマニュアルを表示します。
+ls   ファイルやディレクトリの情報を表示します。
+sl   蒸気機関車が走ります。
+pwd  カレントディレクトリを表示します。
+echo メッセージや環境変数を表示します。
+date 現在日時を表示します。
 """
 
 def command(event, line_bot_api):
@@ -55,7 +59,7 @@ def command(event, line_bot_api):
         )
     elif event.message.text=='date':
         tdatetime =  datetime.datetime.now()
-        tstr = tdatetime.strftime('%Y/%m/%d')
+        tstr = tdatetime.strftime.today()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=tstr)
@@ -65,9 +69,6 @@ def command(event, line_bot_api):
             event.reply_token,
             TextSendMessage(text='command not found')
         )
-        
-
-        
 
 
 
@@ -83,15 +84,8 @@ def command(event, line_bot_api):
 
 
 
-        
 
 
-
-
-
-
-
-        
 
 
 

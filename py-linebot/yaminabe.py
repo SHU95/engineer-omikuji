@@ -19,4 +19,18 @@ from linebot.models import (
 )
 
 def yaminabe(event, line_bot_api):
-  gatixya=[['HTML','CSS','JS'],['python','Go','R','Ruby']]
+    gatixya=[['HTML','CSS','JS','Node.js','Nuxt.js','Next.js','React.js'],['Java','python','Go','R','Ruby','C#','C++','C','PHP'],['AWS','GCP','Azure','heroku']]
+
+    ans=[]
+    for i in gatixya:
+        ans.append(random.choice(i))
+
+    text=f'使用技術：{ans[0]},{ans[1]},{ans[2]}'
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=text)
+    )
+
+
+
