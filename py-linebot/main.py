@@ -18,6 +18,7 @@ from linebot.models import (
 # これから追加する.pyファイルのimportはここにしてほしい（コピペしにくい）
 from omikuji import omikuji
 from yaminabe import yaminabe
+from debugjinja import debugjinja
 from massage import res
 from help import help
 

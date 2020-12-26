@@ -1,7 +1,6 @@
 from flask import Flask, request, abort
 import os,json,shutil,random
 import urllib
-import main
 from PIL import Image, ImageDraw, ImageFont
 from massage import res
 from linebot import (
