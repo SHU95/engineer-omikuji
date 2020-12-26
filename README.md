@@ -1,3 +1,3 @@
 # winter_hackathon
-- Ryunosuke-ikeda!
+- Ryunosuke-ikeda
 - Honda
