@@ -148,40 +148,26 @@ def omikuji(event):
     line_bot_api.reply_message(
         event.reply_token,
         TemplateSendMessage(
-                alt_text="占い結果",
-                template=ButtonsSendMessage(
-                    text=text,
-                    title="占い結果",
-                    thumbnail_image_url=url,
-                    action=[
-                        URIAction(
-                            uri="https://twitter.com/intent/tweet?" + 
-                            urllib.parse.urlencode(
-                            {
-                                "url": url,
-                                "hashtags": "えんじにあうらない",
-                                "text": text
-                            },
-                            label="Twitterで共有"
-                            )
+            alt_text="占い結果",
+            template=ButtonsSendMessage(
+                text=text,
+                title="占い結果",
+                thumbnail_image_url=url,
+                action=[
+                    URIAction(
+                        uri="https://twitter.com/intent/tweet?" + 
+                        urllib.parse.urlencode(
+                        {
+                            "url": url,
+                            "hashtags": "えんじにあうらない",
+                            "text": text
+                        },
+                        label="Twitterで共有"
                         )
-                    ]
-                )
+                    )
+                ]
             )
-
-            """
-        [
-            TextSendMessage(
-                text = "おみくじの結果は？？？？\n" + comment
-            ),
-            ImageSendMessage(
-                original_content_url= f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
-                preview_image_url=f"https://winter-hackathon2020.herokuapp.com/static/mikuji/{image_path}",
-                #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
-                #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
-            ),
-        ]
-            """
+        )
     )
     
 
