@@ -132,9 +132,9 @@ def omikuji(event):
     
     text=dic()
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
-    image = Image.open('py-linebot/static/mikuji/base.jpg')
+    #image = Image.open('py-linebot/static/mikuji/base.jpg')
 
-    image_path,comment=make_mikuji(text,image)
+    image_path,comment=make_mikuji(text)
     import os
     path = os.getcwd()
     files = os.listdir(path)
