@@ -1,5 +1,5 @@
 from flask import Flask, request, abort
-import os,json,shutil,urllib
+import os,json,shutil
 from dic import dic
 from make_mikuji import make_mikuji
 from PIL import Image, ImageDraw, ImageFont
@@ -14,8 +14,7 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
-    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage,
-    TemplateSendMessage,ButtonsTemplate,URIAction
+    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage
 )
 
 
@@ -48,7 +47,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
+    if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく!"):
 
         omikuji(event)
         
@@ -90,47 +89,44 @@ def omikuji(event):
         )
     )
     
+
+    '''
+    '''
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
         loader=FileSystemLoader('py-linebot/templates'),
         autoescape=select_autoescape(['html', 'xml', 'json'])
     )
     
-    #初期化
-    park = "park"
-    genre = "genre"
-    area = "area"
-    info_url = ""
-    target_url = ""
-    counter = 0
-    situation = ""
 
     les = "les"
     template = template_env.get_template('test.json')
     data = template.render(dict(items=les))
+    '''
+    '''
 
     select__theme_massage = FlexSendMessage(
             alt_text="テーマ選択",
             contents=BubbleContainer.new_from_json_dict(json.loads(data))
             )
+    '''
+    '''
+
     line_bot_api.reply_message(
-    event.reply_token,
-    FlexSendMessage(
-        alt_text="結果表示",
-        contents=BubbleContainer.new_from_json_dict(json.loads(data))
-    )
+        event.reply_token,
+        res()
     ) 
-
-
+    '''
     
-    
+    '''
     line_bot_api.reply_message(
             event.reply_token,
             FlexSendMessage(contents=container_obj)
         )
+    '''
     
 
-    '''
+    
     text=dic()
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
     #image = Image.open('py-linebot/static/mikuji/base.jpg')
@@ -153,17 +149,14 @@ def omikuji(event):
                 text = "おみくじの結果は？？？？\n" + comment
             ),
             ImageSendMessage(
-                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
-                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com//static/mikuji/{image_path}",
+                original_content_url= f"https://e-omikuji.herokuapp.com/static/mikuji/{image_path}",
+                preview_image_url=f"https://e-omikuji.herokuapp.com//static/mikuji/{image_path}",
                 #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
                 #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
             )
         ]
     )
-
     
-
-
 
 if (__name__ == "__main__"):
 
