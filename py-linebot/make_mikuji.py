@@ -51,9 +51,9 @@ def make_mikuji(text):
     no=random.randint(0,300)
 
     #出来上がった画像を保存する
-    image.save(f"py-linebot/static/mikuji/result{no}.jpg")
+    image.save(f"py-linebot/static/mikuji/result{no}.png")
 
-    return f"result{no}.jpg",text[0]
+    return f"result{no}.png",text[0]
 
 
 
