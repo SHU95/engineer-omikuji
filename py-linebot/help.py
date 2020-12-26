@@ -41,7 +41,7 @@ def help(event, line_bot_api):
                         label="デバッグ神社"
                     )
                     MessageAction(
-                        text="help"
+                        text="help",
                         label="help"
                     )
                 ]
