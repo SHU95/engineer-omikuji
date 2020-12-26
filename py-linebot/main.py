@@ -152,6 +152,7 @@ def omikuji(event):
             template=ButtonsTemplate(
                 text=text,
                 title="占い結果",
+                image_size="cover",
                 thumbnail_image_url=url,
                 action=[
                     URIAction(
