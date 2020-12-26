@@ -56,5 +56,5 @@ def make_mikuji(text):
 
 
 
-text=dic()
-make_mikuji(text)
+#text=dic()
+#make_mikuji(text)
