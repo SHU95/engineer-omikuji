@@ -20,7 +20,7 @@ from omikuji import omikuji
 from yaminabe import yaminabe
 from debugjinja import debugjinja
 from massage import res
-from help import help
+from help import help, helpcmd
 from command import command
 
 app = Flask(__name__)
@@ -58,7 +58,7 @@ def handle_message(event):
         yaminabe(event, line_bot_api)
     elif (event.message.text =='参拝' or event.message.text =='デバック神社'):
         debugjinja(event, line_bot_api)
-    elif (event.message.text =='ヘルプ' or event.message.text == 'help'):
+    elif (event.message.text =='ヘルプ'):
         help(event, line_bot_api)
 
     else:

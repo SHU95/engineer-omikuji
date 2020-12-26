@@ -20,13 +20,28 @@ from linebot.models import (
 
 def command(event, line_bot_api):
     if event.message.text=='ls':
-        text='docker, static, command.py, debugjinja.py'
+        text='docker  static  command.py  debugjinja.py  docker-compose.yml  Dockerfile  help.py  main.py  omikuji.py requirements.txt  runtime.txt  yaminabe.py'
         line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=text)
             )
+    elif event.message.text=='sl':
+        line_bot_api.reply_message(
+            event.reply_token,
+            VideoSendMessage(
+                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/sl.mp4",
+                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/sl.jpg",
+            )
+            )
+    elif event.message.text=='pwd':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='/app/py-lnebot')
+        )
+
+    
     else:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
+            TextSendMessage(text='command not found')
+        
