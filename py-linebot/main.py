@@ -75,6 +75,22 @@ def omikuji(event):
         loader=FileSystemLoader('templates'),
         autoescape=select_autoescape(['html', 'xml', 'json'])
     )
+    les = "les"
+    template = template_env.get_template('test.json')
+    data = template.render(dict(items=les))
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        FlexSendMessage(
+            alt_text="items",
+            contents=CarouselContainer.new_from_json_dict(json.loads(data))
+        )
+    )
+
+
+
+
+    '''
     #初期化
     park = "park"
     genre = "genre"
@@ -102,7 +118,7 @@ def omikuji(event):
     ) 
 
 
-   
+    '''
     
     '''
     line_bot_api.reply_message(
