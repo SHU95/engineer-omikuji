@@ -70,6 +70,7 @@ def handle_message(event):
         )
 
 def omikuji(event):
+    '''
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
         loader=FileSystemLoader('https://hackathon-engineer-omikuji.herokuapp.com/templates'),
@@ -86,7 +87,7 @@ def omikuji(event):
             contents=CarouselContainer.new_from_json_dict(json.loads(data))
         )
     )
-
+    '''
 
 
 
@@ -128,15 +129,15 @@ def omikuji(event):
     '''
     
 
-    '''
+    
     text=dic()
     #path="https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
-    #image = Image.open(path)
+    image = Image.open('base.jpg')
 
-    #image_path,comment=make_mikuji(text,image)
+    image_path,comment=make_mikuji(text,image)
 
-    image_path = "base.jpg"
-    comment='test'
+    #image_path = "base.jpg"
+    #comment='test'
 
     
     line_bot_api.reply_message(
@@ -153,7 +154,7 @@ def omikuji(event):
             )
         ]
     )
-    '''
+    
 
     
 
