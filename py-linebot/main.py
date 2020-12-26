@@ -21,6 +21,7 @@ from yaminabe import yaminabe
 from debugjinja import debugjinja
 from massage import res
 from help import help
+from command import command
 
 app = Flask(__name__)
 
@@ -61,11 +62,13 @@ def handle_message(event):
         help(event, line_bot_api)
 
     else:
-        
+        '''
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
         )
+        '''
+        command(event, line_bot_api)
         
 
 
