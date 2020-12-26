@@ -6,7 +6,8 @@ def make_mikuji(text):
     base_text=['エンジニアおみくじ','縁起の良い言語','デバッグ運','開発環境','技術書','行うべき習慣']
     
     #元画像を読み込んでくる場合
-    image = Image.open("https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/lena.jpg")
+    #image = Image.open("https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/lena.jpg")
+    image = Image.open("https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg")
 
     #文字を書きこむ為のオブジェクトが用意されているので取得する
     draw = ImageDraw.Draw(image)
