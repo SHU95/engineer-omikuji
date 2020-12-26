@@ -66,9 +66,10 @@ def handle_message(event):
 
 def omikuji(event):
     text=dic()
-    image_path,comment=make_mikuji(text)
+    #image_path,comment=make_mikuji(text)
 
-    #image_path = "static/mikuji/lena.jpg"
+    image_path = "lena.jpg"
+    comment='test'
 
     line_bot_api.reply_message(
         event.reply_token,
