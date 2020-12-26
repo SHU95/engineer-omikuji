@@ -149,7 +149,7 @@ def omikuji(event):
         event.reply_token,
         TemplateSendMessage(
             alt_text="占い結果",
-            template=ButtonsSendMessage(
+            template=ButtonsTemplate(
                 text=text,
                 title="占い結果",
                 thumbnail_image_url=url,
