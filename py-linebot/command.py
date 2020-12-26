@@ -18,13 +18,15 @@ from linebot.models import (
     TemplateSendMessage,ButtonsTemplate,URIAction,VideoSendMessage
 )
 
-helpMsg ="ls   \n" +
-    "sl   蒸気機関車が走ります。\n"
+helpMsg ="""
+ls   \n
+sl   蒸気機関車が走ります。\n
+"""
 
 def command(event, line_bot_api):
     if event.message.text=='ls':
-        text='docker  static  command.py  debugjinja.py \n'+ 
-         'docker-compose.yml  Dockerfile  help.py  main.py \n' +
+        text='docker  static  command.py  debugjinja.py '+
+         'docker-compose.yml  Dockerfile  help.py  main.py ' +
          'omikuji.py requirements.txt  runtime.txt  yaminabe.py'
         line_bot_api.reply_message(
                 event.reply_token,
@@ -84,6 +86,9 @@ def command(event, line_bot_api):
 
 
         
+
+
+
 
 
 
