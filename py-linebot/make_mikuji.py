@@ -6,15 +6,15 @@ def make_mikuji(text):
     base_text=['エンジニアおみくじ','縁起の良い言語','デバッグ運','開発環境','技術書','行うべき習慣']
     
     #元画像を読み込んでくる場合
-    image = Image.open("static/mikuji/base.jpg")
+    image = Image.open("./static/mikuji/base.jpg")
 
     #文字を書きこむ為のオブジェクトが用意されているので取得する
     draw = ImageDraw.Draw(image)
 
     #フォントを決める
-    font = ImageFont.truetype("mikuji/AoyagiKouzanTOTF.otf", size=95)
-    font2 = ImageFont.truetype("mikuji/AoyagiKouzanTOTF.otf", size=70)
-    font3 = ImageFont.truetype("mikuji/AoyagiKouzanTOTF.otf", size=190)
+    font = ImageFont.truetype("static/mikuji/AoyagiKouzanTOTF.otf", size=95)
+    font2 = ImageFont.truetype("static/mikuji/AoyagiKouzanTOTF.otf", size=70)
+    font3 = ImageFont.truetype("static/mikuji/AoyagiKouzanTOTF.otf", size=190)
 
     #描きたい文字のサイズを取得する
     draw_text_width, draw_text_height = draw.textsize(base_text[0], font=font3)
@@ -47,7 +47,7 @@ def make_mikuji(text):
     no=random.randint(0,300)
 
     #出来上がった画像を保存する
-    image.save(f"static/mikuji/result{no}.jpg")
+    image.save(f"./static/mikuji/result{no}.jpg")
 
     return f"result{no}.jpg",text[0]
 
