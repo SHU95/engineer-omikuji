@@ -3,6 +3,8 @@ import os,json,shutil
 import urllib
 from PIL import Image, ImageDraw, ImageFont
 from massage import res
+import datetime
+import random
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -35,7 +37,6 @@ def debugjinja(event, line_bot_api):
   ]
 
   ans=random.choice(kakugen)
-  import datetime
   dt_now = datetime.datetime.now()
   h=dt_now.hour
 

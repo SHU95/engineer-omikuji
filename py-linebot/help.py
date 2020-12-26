@@ -25,7 +25,7 @@ msgActions = [
     MessageAction(
         label="闇鍋ガチャ",
         text="闇鍋"
-    ),
+    )
 ]
 
 def help(event, line_bot_api):

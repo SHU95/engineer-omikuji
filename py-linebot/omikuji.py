@@ -35,7 +35,7 @@ def omikuji(event, line_bot_api):
     #image_path = "base.jpg"
     #comment='test'
     
-    main.line_bot_api.reply_message(
+    line_bot_api.reply_message(
         event.reply_token,
         TemplateSendMessage(
             alt_text="占い結果",
