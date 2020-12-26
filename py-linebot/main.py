@@ -48,30 +48,30 @@ def handle_message(event):
             TextSendMessage(text=event.message.text)
         )
 
-    # 画像送信
-    """
-    main_image_path = f"lena.jpg"
-    image_message = ImageSendMessage(
-        original_content_url = f"https://date-the-image.herokuapp.com/{main_image_path}",
-    )
-    line_bot_api.reply_message(event.reply_token,image_message)
-    """
 
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
 
-       omikuji(event)
-       """
-       image_link, lucky_text = make_mikuji.get_mikuji()
-       line_bot_api.reply_message(
-           event.reply_token,
-           TextSendMessage(text=lucky_text)
-       )
+        #omikuji(event)
 
-       image_message = ImageSendMessage(
-          content_url = image_link,
-       )
-       line_bot_api.reply_message(event.reply_token,image_message)
-       """
+        #画像送信
+        main_image_path = f"lena.jpg"
+        image_message = ImageSendMessage(
+            original_content_url = f"https://date-the-image.herokuapp.com/{main_image_path}",
+        )
+        line_bot_api.reply_message(event.reply_token,image_message)
+        
+        """
+        image_link, lucky_text = make_mikuji.get_mikuji()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=lucky_text)
+        )
+
+        image_message = ImageSendMessage(
+            content_url = image_link,
+        )
+        line_bot_api.reply_message(event.reply_token,image_message)
+        """
 
 
 
