@@ -20,7 +20,7 @@ from omikuji import omikuji
 from yaminabe import yaminabe
 from debugjinja import debugjinja
 from massage import res
-from help import help, helpcmd
+from help import help
 from command import command
 
 app = Flask(__name__)

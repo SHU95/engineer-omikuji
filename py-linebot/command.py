@@ -45,3 +45,6 @@ def command(event, line_bot_api):
             event.reply_token,
             TextSendMessage(text='command not found')
         
+
+
+

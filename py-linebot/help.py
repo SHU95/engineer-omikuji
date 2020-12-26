@@ -35,7 +35,7 @@ def help(event, line_bot_api):
                     MessageAction(
                         text="闇鍋",
                         label="闇鍋ガチャ"
-                    )
+                    ),
                     MessageAction(
                         text="参拝",
                         label="デバッグ神社"
