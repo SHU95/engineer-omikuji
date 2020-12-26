@@ -70,6 +70,7 @@ def handle_message(event):
         )
 
 def omikuji(event):
+    '''
     
     from jinja2 import Environment, FileSystemLoader, select_autoescape
     template_env = Environment(
@@ -88,10 +89,13 @@ def omikuji(event):
         )
     )
     
-
-
-
     '''
+    from jinja2 import Environment, FileSystemLoader, select_autoescape
+    template_env = Environment(
+        loader=FileSystemLoader('py-linebot/templates'),
+        autoescape=select_autoescape(['html', 'xml', 'json'])
+    )
+    
     #初期化
     park = "park"
     genre = "genre"
@@ -104,11 +108,13 @@ def omikuji(event):
     les = "les"
     template = template_env.get_template('test.json')
     data = template.render(dict(items=les))
+    '''
 
     select__theme_massage = FlexSendMessage(
             alt_text="テーマ選択",
             contents=BubbleContainer.new_from_json_dict(json.loads(data))
             )
+    '''
 
     line_bot_api.reply_message(
     event.reply_token,
@@ -119,7 +125,7 @@ def omikuji(event):
     ) 
 
 
-    '''
+    
     
     '''
     line_bot_api.reply_message(
