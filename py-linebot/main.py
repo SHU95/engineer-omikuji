@@ -150,7 +150,7 @@ def omikuji(event):
         TemplateSendMessage(
             alt_text="占い結果",
             template=ButtonsTemplate(
-                text=comment,
+                text=comment + "だよ～",
                 title="占い結果",
                 image_size="contain",
                 thumbnail_image_url=url,
@@ -159,9 +159,9 @@ def omikuji(event):
                         uri="https://twitter.com/intent/tweet?" + 
                             urllib.parse.urlencode(
                             {
-                                "url": url,
+                                "img": url,
                                 "hashtags": "えんじにあうらない",
-                                "text": text
+                                "text": comment + "だよ～"
                             }
                         ),
                         label="Twitterで共有"
