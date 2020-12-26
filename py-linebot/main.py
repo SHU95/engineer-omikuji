@@ -1,5 +1,6 @@
 from flask import Flask, request, abort
 import os
+from dic import dic
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -8,7 +9,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,
 )
 
 app = Flask(__name__)
@@ -50,9 +51,29 @@ def handle_message(event):
     image_message = ImageSendMessage(
         original_content_url = f"https://date-the-image.herokuapp.com/{main_image_path}",
     )
-
     line_bot_api.reply_message(event.reply_token,image_message)
     """
+
+    if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
+        omikuji(event)
+
+def omikuji(event):
+    link, identifier = dic()
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(
+            text = event.message.text
+        )
+        [
+            TextSendMessage(
+                text = "おみくじの結果！" +
+                    (identifier == "" if "" else "\n" + identifier)
+            ),
+            ImageSendMessage(
+                original_content_url = link
+            )
+        ]
+    )
 
 if __name__ == "__main__":
 
