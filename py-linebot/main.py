@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 import os
 from dic import dic
 from make_mikuji import make_mikuji
+from PIL import Image, ImageDraw, ImageFont
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -66,10 +67,13 @@ def handle_message(event):
 
 def omikuji(event):
     text=dic()
-    #image_path,comment=make_mikuji(text)
+    path=f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/base.jpg"
+    image = Image.open(path)
 
-    image_path = "lena.jpg"
-    comment='test'
+    image_path,comment=make_mikuji(text,image)
+
+    #image_path = "lena.jpg"
+    #comment='test'
 
     line_bot_api.reply_message(
         event.reply_token,
