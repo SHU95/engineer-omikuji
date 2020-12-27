@@ -5,7 +5,7 @@ This tool is a LINEbot that allows you to draw fortunes related to engineers.
 This tool is a LINEBot created based on the theme of the Winter Hackathon.
 
 # Demo
-↓QR Code of this LINE Bot
+QR Code of this LINE Bot:
 https://qr-official.line.me/sid/L/235gtgug.png
 
 # Usage
