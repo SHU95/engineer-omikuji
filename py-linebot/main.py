@@ -21,6 +21,7 @@ from yaminabe import yaminabe
 from debugjinja import debugjinja
 from massage import res
 from help import help
+from qiita import qiita
 from command import command
 
 app = Flask(__name__)
@@ -60,6 +61,8 @@ def handle_message(event):
         debugjinja(event, line_bot_api)
     elif (event.message.text =='ヘルプ'):
         help(event, line_bot_api)
+    elif (event.message.text == 'qiita'):
+        qiita(event, line_bot_api)
 
     else:
         '''
