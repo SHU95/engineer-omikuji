@@ -9,9 +9,8 @@ This tool is a LINEBot created based on the theme of the Winter Hackathon.
 # Usage
 
 # Requirements
-- Docker
+- python
 - Flask 
-- mysql 5.7
 - heroku
 
 # winter_hackathon_Team
