@@ -12,6 +12,7 @@ This tool is a LINEBot created based on the theme of the Winter Hackathon.
 - python
 - Flask 
 - heroku
+- LINE messaging API
 
 # winter_hackathon_Team
 - Ryunosuke-ikeda
