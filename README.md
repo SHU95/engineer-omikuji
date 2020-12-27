@@ -12,10 +12,10 @@ https://qr-official.line.me/sid/L/235gtgug.png
 
 
 # Requirements
-- Docker
+- python
 - Flask 
-- mysql 5.7
 - heroku
+- LINE messaging API
 
 # winter_hackathon_Team
 - Ryunosuke-ikeda
