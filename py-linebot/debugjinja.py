@@ -36,9 +36,12 @@ def debugjinja(event, line_bot_api):
   'プログラムは思った通りに動かない。書いた通りに動く。',
   '慌てず急いで正確に'
   ]
-
+  
+  
   ans=random.choice(kakugen)
-  dt_now = datetime.datetime.now()
+
+  from pytz import timezone
+  dt_now = datetime.datetime.now(timezone('Asia/Tokyo'))
   h=dt_now.hour
 
   if h<=17 or h>8:
