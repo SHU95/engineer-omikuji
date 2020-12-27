@@ -1,4 +1,4 @@
-# Engineer-oseti
+# Engineer-osechi
 This tool is a LINEbot that allows you to draw fortunes related to engineers.
 
 # Description
