@@ -63,11 +63,11 @@ def qiita(event, line_bot_api):
                 actions=[
                     URIAction(
                         uri=urls[ret_id]['url'],
-                        label="qiita"
+                        label="この記事を見る"
                     ),
                     MessageAction(
                         text="qiita",
-                        label="qiita"
+                        label="次の記事を見る"
                     )
                 ]
             )

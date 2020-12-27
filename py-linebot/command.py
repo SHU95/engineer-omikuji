@@ -77,10 +77,13 @@ def command(event, line_bot_api):
 
         Moriten 
         https://twitter.com/ImR0305
+
         Arai 
         https://twitter.com/ElectroARAIsan
+
         SHU 
         https://twitter.com/shark95shu
+
         Kalancs
         https://twitter.com/kalancs17
 
