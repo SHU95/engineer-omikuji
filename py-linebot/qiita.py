@@ -47,7 +47,8 @@ def qiita(event, line_bot_api):
 
     urls = []
     for item in json_load['data']:
-        urls.append(item['url'])
+        #urls.append(item['url'])
+        urls.append(item)
 
     url_count = len(urls)
     ret_id = random.randint(0,url_count-1)
@@ -57,13 +58,16 @@ def qiita(event, line_bot_api):
         TemplateSendMessage(
             alt_text="qiita",
             template=ButtonsTemplate(
-                text=urls[ret_id],
+                text=urls[ret_id]['title'],
                 title="おすすめの記事！",
                 actions=[
+                    URIAction(
+                        uri=urls[ret_id]['url'],
+                        label=urls[ret_id]['url']
+                    ),
                     MessageAction(
-                        text=urls[ret_id],
-                        label="qiita"
-                    )
+                        text="qiita",
+                        label="記事をもっと探す"                      )
                 ]
             )
         )
