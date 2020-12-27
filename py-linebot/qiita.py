@@ -67,7 +67,8 @@ def qiita(event, line_bot_api):
                     ),
                     MessageAction(
                         text="qiita",
-                        label="記事をもっと探す"                      )
+                        label="記事をもっと探す"
+                    )
                 ]
             )
         )

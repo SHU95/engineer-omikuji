@@ -54,6 +54,9 @@ def debugjinja(event, line_bot_api):
   line_bot_api.reply_message(
         event.reply_token,
         [
+            TextSendMessage(
+                text = 'ゴ――――――ン'
+            ),
             ImageSendMessage(
                 original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
                 #original_content_url= f"py-linebot/static/mikuji/{image_path}",
