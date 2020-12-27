@@ -71,11 +71,34 @@ def command(event, line_bot_api):
             event.reply_token,
             TextSendMessage(text='echo')
         )
-    elif event.message.text=='echo':
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text='echo')
-    )
+    elif event.message.text=='contributors':
+        text="""
+        contributors:
+
+        Moriten 
+        https://twitter.com/ImR0305
+        Arai 
+        https://twitter.com/ElectroARAIsan
+        SHU 
+        https://twitter.com/shark95shu
+        Kalancs
+        https://twitter.com/kalancs17
+
+        Special thanks:
+        Nao Tagai
+        """
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='echo')
+        )
+    elif event.message.text=='ぬるぽ':
+        text='ｶﾞｯ'
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=text)
+        )
+
     else:
         line_bot_api.reply_message(
             event.reply_token,
