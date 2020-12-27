@@ -126,9 +126,9 @@ def make_mikuji(text):
     #出来上がった画像を保存する
     image.save(f"py-linebot/static/mikuji/result{no}.png")
 
-    return f"result{no}.png", text[0] + "でした！" +
-        "縁起の良い言語は" + text[1] + "でした！" + 
-        "特に" + base_text[3 + (no % 3)] + "は" + text[3 + (no % 3)] + "でした！"
+    return (f"result{no}.png", text[0] + "でした！" +
+        "縁起の良い言語は" + text[1] + "でした！" +
+        "特に" + base_text[3 + (no % 3)] + "は" + text[3 + (no % 3)] + "でした！")
 
 
 
