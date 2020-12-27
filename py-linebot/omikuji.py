@@ -27,14 +27,14 @@ def omikuji(event, line_bot_api):
     path = os.getcwd()
     files = os.listdir(path)
     print(type(files))  # <class 'list'>
-    print(files) 
+    print(files)
 
 
     url = f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}"
 
     #image_path = "base.jpg"
     #comment='test'
-    
+
     line_bot_api.reply_message(
         event.reply_token,
         TemplateSendMessage(
@@ -46,7 +46,7 @@ def omikuji(event, line_bot_api):
                 thumbnail_image_url=url,
                 actions=[
                     URIAction(
-                        uri="https://twitter.com/intent/tweet?" + 
+                        uri="https://twitter.com/intent/tweet?" +
                             urllib.parse.urlencode(
                             {
                                 "url": url,
@@ -78,7 +78,7 @@ def dic():
 
 def make_mikuji(text):
     base_text=['エンジニアおみくじ','縁起の良い言語','デバッグ運','開発環境','技術書','行うべき習慣']
-    
+
     #元画像を読み込んでくる場合
 
     #path='./static/mikuji/base.jpg'
@@ -126,9 +126,10 @@ def make_mikuji(text):
     #出来上がった画像を保存する
     image.save(f"py-linebot/static/mikuji/result{no}.png")
 
-    return (f"result{no}.png", text[0] + "でした！" +
-        "縁起の良い言語は" + text[1] + "でした！" +
-        "特に" + base_text[3 + (no % 3)] + "は" + text[3 + (no % 3)] + "でした！")
+    respons=text[0] + "でした！" +"縁起の良い言語は" + text[1] + "でした！" +"特に" + base_text[3 + (no % 3)] + "は" + text[3 + (no % 3)] + "でした！"
+
+    return f"result{no}.png",respons
+
 
 
 
