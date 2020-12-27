@@ -63,7 +63,11 @@ def qiita(event, line_bot_api):
                 actions=[
                     URIAction(
                         uri=urls[ret_id]['url'],
-                        label=urls[ret_id]['url']
+                        label="qiita"
+                    ),
+                    MessageAction(
+                        text="qiita",
+                        label="qiita"
                     )
                 ]
             )
