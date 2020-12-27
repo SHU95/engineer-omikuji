@@ -57,7 +57,7 @@ def qiita(event, line_bot_api):
         TemplateSendMessage(
             alt_text="qiita",
             template=ButtonsTemplate(
-                text=help_comment,
+                text=urls[ret_id],
                 title="おすすめの記事！",
                 actions=[
                     MessageAction(

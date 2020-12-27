@@ -71,6 +71,11 @@ def command(event, line_bot_api):
             event.reply_token,
             TextSendMessage(text='echo')
         )
+    elif event.message.text=='echo':
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text='echo')
+    )
     else:
         line_bot_api.reply_message(
             event.reply_token,
