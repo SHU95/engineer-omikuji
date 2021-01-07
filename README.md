@@ -5,7 +5,7 @@ This tool is a LINEbot that allows you to draw fortunes related to engineers.
 This tool is a LINEBot created based on the theme of the Winter Hackathon.
 
 # Demo
-
+https://line.me/R/ti/p/%40235gtgug
 # Usage
 - Yami-Nabe Gacha
 
