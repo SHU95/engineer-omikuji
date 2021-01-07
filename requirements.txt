@@ -6,3 +6,4 @@ pymysql
 line-bot-sdk
 gunicorn
 Pillow
+pytz

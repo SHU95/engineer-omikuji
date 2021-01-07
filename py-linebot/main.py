@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
-import os
-from dic import dic
-from make_mikuji import make_mikuji
+import os,json,shutil,urllib,random
+from PIL import Image, ImageDraw, ImageFont
+from pathlib import Path
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -10,8 +10,19 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,
+    MessageEvent, TextMessage, PostbackTemplateAction, PostbackEvent, PostbackAction, QuickReplyButton, QuickReply,
+    FlexSendMessage, BubbleContainer, CarouselContainer, TextSendMessage,ImageSendMessage,
+    TemplateSendMessage,ButtonsTemplate,URIAction
 )
+
+# これから追加する.pyファイルのimportはここにしてほしい（コピペしにくい）
+from omikuji import omikuji
+from yaminabe import yaminabe
+from debugjinja import debugjinja
+from massage import res
+from help import help
+from qiita import qiita
+from command import command
 
 app = Flask(__name__)
 
@@ -43,48 +54,25 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if (event.message.text == "おみくじ" or event.message.text == "おみくじをひく"):
+        omikuji(event, line_bot_api)
+    elif (event.message.text =='闇鍋ガチャ' or event.message.text == '闇鍋'):
+        yaminabe(event, line_bot_api)
+    elif (event.message.text =='参拝' or event.message.text =='デバック神社'):
+        debugjinja(event, line_bot_api)
+    elif (event.message.text =='ヘルプ'):
+        help(event, line_bot_api)
+    elif (event.message.text == 'qiita'):
+        qiita(event, line_bot_api)
 
-        omikuji(event)
-        
-        """
-        image_link, lucky_text = make_mikuji.get_mikuji()
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=lucky_text)
-        )
-
-        image_message = ImageSendMessage(
-            content_url = image_link,
-        )
-        line_bot_api.reply_message(event.reply_token,image_message)
-        """
     else:
+        '''
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
         )
-
-def omikuji(event):
-    text=dic()
-    #image_path,comment=make_mikuji(text)
-
-    image_path = "lena.jpg"
-    comment='test'
-
-    line_bot_api.reply_message(
-        event.reply_token,
-        [
-            TextSendMessage(
-                text = "おみくじの結果は？？？？\n" + comment
-            ),
-            ImageSendMessage(
-                original_content_url= f"https://hackathon-engineer-omikuji.herokuapp.com/static/mikuji/{image_path}",
-                preview_image_url=f"https://hackathon-engineer-omikuji.herokuapp.com//static/mikuji/{image_path}",
-                #original_content_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg' ,
-                #preview_image_url='https://cdn.shibe.online/shibes/907fed97467e36f3075211872d98f407398126c4.jpg',
-            )
-        ]
-    )
+        '''
+        command(event, line_bot_api)
+        
 
 
 if (__name__ == "__main__"):
